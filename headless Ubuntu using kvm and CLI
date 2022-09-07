@@ -1,4 +1,10 @@
+#nat with dhcp
 sudo virt-install --name=Chatbot-rasa --vcpus=4 --cpu=host --memory=8192 --disk path=/var/lib/libvirt/images/chatbot_rasa.img,size=200 --os-variant=ubuntu20.04 -l "http://gr.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/" --network network:default --graphics none --extra-args='console=ttyS0,115200n8 serial'
-
-#get vm dhcp ip and access it with ssh 
+#get vm dhcp ip and access it with ssh
 sudo virsh net-dhcp-leases default
+
+#bridged with manually assined ip 
+sudo virt-install --name=chatbot-rasa --vcpus=4 --cpu=host --memory=8192 --disk path=/var/lib/libvirt/images/chatbot_rasa.img,size=200 --os-variant=ubuntu20.04 -l "http://gr.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/" --network bridge=br0 --graphics none --extra-args='console=ttyS0,115200n8 serial'
+
+ 
+
